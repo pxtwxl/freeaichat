@@ -9,6 +9,7 @@ def query(payload):
     return response.json()
 
 def main():
+    st.image("chatbot.png", caption="Image Caption")
     st.title("Chatbot")
     user_input = st.text_input("You:")
     if st.button("Send"):
