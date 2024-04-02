@@ -10,8 +10,7 @@ def query(payload):
 
 def main():
     st.markdown('<div style="display: flex; justify-content: center; max-width=300px"></div>', unsafe_allow_html=True)
-    st.markdown('<img src="chatbot.png" style="width: 500px;">', unsafe_allow_html=True)
-    # st.image("chatbot.png",width=350)
+    st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
     if st.button("Send"):
