@@ -9,7 +9,7 @@ def query(payload):
     return response.json()
 
 def main():
-    st.markdown('<div style="display: flex; justify-content: center;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="display: flex; justify-content: center; max-width=300px"></div>', unsafe_allow_html=True)
     st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
