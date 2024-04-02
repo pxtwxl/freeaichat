@@ -9,8 +9,8 @@ def query(payload):
     return response.json()
 
 def main():
-    st.markdown('<h1 style="text-align: center;">Your Image Caption</h1>', unsafe_allow_html=True)
-    st.image("chatbot.png",use_column_width=True)
+    st.markdown('<h1 style="text-align: center;"/>', unsafe_allow_html=True)
+    st.image("chatbot.png",width=200)
     st.title("Chatbot")
     user_input = st.text_input("You:")
     if st.button("Send"):
