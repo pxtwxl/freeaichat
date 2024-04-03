@@ -54,7 +54,7 @@ def main():
        </script>
     """, unsafe_allow_html=True)
     
-    if st.button("Send"):
+    if st.button("Send", key='send_button'):
         if user_input:
             # st.session_state.chat_history.append(f"You: {user_input}")
             output = query({
