@@ -61,7 +61,7 @@ def main():
             st.write("Bot:", bot_response)
     st.subheader("Chat History")
     
-    for user_query, bot_response in st.session_state.chat_history[:-1]:
+    for i,(user_query, bot_response) in st.session_state.chat_history[:-1]:
         if i % 2 == 0:
             st.markdown(f'<p class="blink">You: {user_query}</p>', unsafe_allow_html=True)
             st.markdown(f'<p class="blink">Bot: {bot_response}</p>', unsafe_allow_html=True)
