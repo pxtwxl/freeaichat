@@ -1,6 +1,7 @@
 import streamlit as st
-# from streamlit.state.session_state import SessionState
 import requests
+
+st.set_page_config(page_title="Chatbot", layout="wide", page_icon="🤖", initial_sidebar_state="expanded", bg_color="black")
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
 headers = {"Authorization": "Bearer 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"}
