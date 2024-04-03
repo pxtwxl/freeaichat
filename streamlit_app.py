@@ -53,9 +53,9 @@ def main():
             st.write("Bot:", bot_response)
     st.subheader("Chat History")
     
-    for user_query, bot_response in st.session_state.bot_responses:
+    for user_query, bot_response in st.session_state.chat_history:
         st.write("You:", user_query)
-        st.write("Bot:", bot_response)
+        st.write("\nBot:", bot_response)
 
 if __name__ == "__main__":
     main()
