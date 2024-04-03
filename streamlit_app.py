@@ -37,8 +37,8 @@ def main():
         st.subheader("Chat History is : ")
             
 
-for role,text in session_state['chat_history']:
-    st.write(f"{role} : {text}")
+        for role,text in session_state['chat_history']:
+            st.write(f"{role} : {text}")
 
 
 if __name__ == "__main__":
