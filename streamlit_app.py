@@ -8,6 +8,14 @@ st.markdown(
         background-color: #000000;
         color: #FFFFFF;
     }
+    .you{
+       font-size: 16px;
+       font-style: bold;
+    }
+    .bot{
+       font-size: 16px;
+       font-style: bold;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -54,8 +62,8 @@ def main():
     st.subheader("Chat History")
     
     for i,(user_input, bot_response) in enumerate(st.session_state.chat_history[:-1]):
-            st.write("You:", user_input)
-            st.write("\nBot:", bot_response)
+            st.write(f"<p class='you'>You: {user_input}</p>", unsafe_allow_html=True)
+            st.write(f"<p class='bot'>Bot: {bot_response}</p>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
