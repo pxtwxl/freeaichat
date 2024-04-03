@@ -35,7 +35,7 @@ def main():
     
     if st.button("Send"):
         if user_input:
-            st.session_state.chat_history.append(f"You: {user_input}")
+            # st.session_state.chat_history.append(f"You: {user_input}")
             output = query({
                 "parameters": {
                     "max_new_tokens": 2048,
@@ -46,12 +46,16 @@ def main():
             })
             bot_response = output[0]["generated_text"]
             bot_response = bot_response.replace(user_input, "").strip()
-            st.session_state.chat_history.append(f"\nBot: {bot_response}")
-            
+            # st.session_state.chat_history.append(f"\nBot: {bot_response}")
+            st.session_state.chat_history.append(user_input,bot_response)
+
+            st.subheader("Response")
             st.write("Bot:", bot_response)
     st.subheader("Chat History")
-    for chunk in chunk_iterator(st.session_state.chat_history, chunk_size=5):
-        st.write("\n".join(chunk))
+    
+    for user_query, bot_response in st.session_state.bot_responses:
+        st.write("You:", user_query)
+        st.write("Bot:", bot_response)
 
 if __name__ == "__main__":
     main()
