@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit.state.session_state import SessionState
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
@@ -13,9 +14,6 @@ def main():
     st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
-
-    if 'chat_history' not in st.session_state:
-        st.session_state['chat_history'] = []
     
     if st.button("Send"):
         if user_input:
@@ -28,18 +26,8 @@ def main():
                 "inputs": user_input,
             })
             bot_response = output[0]["generated_text"]
-            st.session_state['chat_history'].append(("You : ",user_input))
-            st.subheader("The Response is ")
-            for chunk in bot_response:
-                st.write(chunk.text)
-                st.session_state['chat_history'].append(("Bot : ",chunk.text))
-        st.write("Bot:", bot_response)
-        st.subheader("Chat History is : ")
             
-
-    for role,text in st.session_state['chat_history']:
-        st.write(f"{role} : {text}")
-
+            st.write("Bot:", bot_response)
 
 if __name__ == "__main__":
     main()
