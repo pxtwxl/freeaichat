@@ -13,6 +13,7 @@ def main():
     st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
+    chat_history = []
     if st.button("Send"):
         if user_input:
             output = query({
@@ -24,7 +25,11 @@ def main():
                 "inputs": user_input,
             })
             bot_response = output[0]["generated_text"]
+            chat_history.append(f"You: {user_input}")
+            chat_history.append(f"Bot: {bot_response}")
             st.write("Bot:", bot_response)
+
+    st.write("\n".join(chat_history))
 
 if __name__ == "__main__":
     main()
