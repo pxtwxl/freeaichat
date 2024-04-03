@@ -40,6 +40,19 @@ def main():
     st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
+
+    st.markdown("""
+       <script>
+           document.addEventListener('DOMContentLoaded', function() {
+               const user_input = document.getElementById('user_input');
+               user_input.addEventListener('keyup', function(event) {
+                   if (event.key === 'Enter') {
+                       document.getElementById('send_button').click();
+                   }
+               });
+           });
+       </script>
+    """, unsafe_allow_html=True)
     
     if st.button("Send"):
         if user_input:
