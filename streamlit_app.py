@@ -2,8 +2,16 @@ import streamlit as st
 import requests
 
 st.markdown(
-    """
+   """
     <style>
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    .blink {
+        animation: blink 1s infinite;
+    }
     body {
         background-color: #000000;
         color: #FFFFFF;
@@ -54,8 +62,12 @@ def main():
     st.subheader("Chat History")
     
     for user_query, bot_response in st.session_state.chat_history[:-1]:
-        st.write("You:", user_query)
-        st.write("\nBot:", bot_response)
+        if i % 2 == 0:
+            st.markdown(f'<p class="blink">You: {user_query}</p>', unsafe_allow_html=True)
+            st.markdown(f'<p class="blink">Bot: {bot_response}</p>', unsafe_allow_html=True)
+        else:
+            st.write("You:", user_query)
+            st.write("\nBot:", bot_response)
 
 if __name__ == "__main__":
     main()
