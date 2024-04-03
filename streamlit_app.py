@@ -37,7 +37,7 @@ def main():
         st.session_state.chat_history = []
     
     st.markdown('<div style="display: flex; justify-content: center; max-width=300px"></div>', unsafe_allow_html=True)
-    st.image("chatbot.png",use_column_width=True)
+    st.image("chatbottxt.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
     
