@@ -18,6 +18,8 @@ def main():
             output = query({
                 "parameters": {
                     "max_new_tokens": 2048,
+                    "temperature" : 0.8,
+                    "top_p":0.7
                 },
                 "inputs": user_input,
             })
