@@ -63,8 +63,8 @@ def main():
     st.subheader("Chat History")
     
     for i,(user_input, bot_response) in enumerate(st.session_state.chat_history[:-1]):
-            st.write(f"<p class='you'>You: {user_input}</p>", unsafe_allow_html=True)
-            st.write(f"<p class='bot'>Bot: {bot_response}</p>", unsafe_allow_html=True)
+            st.write(f"<p class='you'>You : \n{user_input}</p>", unsafe_allow_html=True)
+            st.write(f"<p class='bot'>Bot : \n{bot_response}</p>", unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
