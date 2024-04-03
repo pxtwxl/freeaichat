@@ -53,7 +53,7 @@ def main():
             st.write("Bot:", bot_response)
     st.subheader("Chat History")
     
-    for user_query, bot_response in st.session_state.chat_history:
+    for user_query, bot_response in st.session_state.chat_history[:-1]:
         st.write("You:", user_query)
         st.write("\nBot:", bot_response)
 
