@@ -13,7 +13,10 @@ def main():
     st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
     user_input = st.text_input("You:")
-    chat_history = []
+
+    if 'chat_history' not in st.session_state:
+        st.session_state['chat_history'] = []
+    
     if st.button("Send"):
         if user_input:
             output = query({
@@ -25,11 +28,18 @@ def main():
                 "inputs": user_input,
             })
             bot_response = output[0]["generated_text"]
-            chat_history.append(f"You: {user_input}")
-            chat_history.append(f"Bot: {bot_response}")
+            st.session_state['chat_history'].append(("You : ",user_input))
+            st.subheader("The Response is ")
+            for chunk in response:
+                st.write(chunk.text)
+                st.session_state['chat_history'].append(("Bot : ",chunk.text))
+        st.subheader("Chat History is : ")
+            
             st.write("Bot:", bot_response)
 
-    st.write("\n".join(chat_history))
+for role,text in session_state['chat_history']:
+    st.write(f"{role} : {text}")
+
 
 if __name__ == "__main__":
     main()
