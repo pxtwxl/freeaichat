@@ -30,7 +30,7 @@ def main():
             bot_response = output[0]["generated_text"]
             st.session_state['chat_history'].append(("You : ",user_input))
             st.subheader("The Response is ")
-            for chunk in response:
+            for chunk in bot_response:
                 st.write(chunk.text)
                 st.session_state['chat_history'].append(("Bot : ",chunk.text))
         st.write("Bot:", bot_response)
