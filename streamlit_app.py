@@ -1,5 +1,5 @@
 import streamlit as st
-# from streamlit.state.session_state import SessionState
+from streamlit.state.session_state import SessionState
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
@@ -10,6 +10,8 @@ def query(payload):
     return response.json()
 
 def main():
+    state = SessionState.get(chat_history=[])
+    
     st.markdown('<div style="display: flex; justify-content: center; max-width=300px"></div>', unsafe_allow_html=True)
     st.image("chatbot.png",use_column_width=True)
     st.title("Chatbot")
@@ -26,8 +28,12 @@ def main():
                 "inputs": user_input,
             })
             bot_response = output[0]["generated_text"]
+            state.chat_history.append(f"You: {user_input}")
+            state.chat_history.append(f"Bot: {bot_response}")
             
             st.write("Bot:", bot_response)
+
+    st.write("\n".join(state.chat_history))
 
 if __name__ == "__main__":
     main()
