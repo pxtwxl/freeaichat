@@ -47,7 +47,7 @@ def main():
             bot_response = output[0]["generated_text"]
             bot_response = bot_response.replace(user_input, "").strip()
             # st.session_state.chat_history.append(f"\nBot: {bot_response}")
-            st.session_state.chat_history.append(user_input,bot_response)
+            st.session_state.chat_history.append((user_input,bot_response))
 
             st.subheader("Response")
             st.write("Bot:", bot_response)
