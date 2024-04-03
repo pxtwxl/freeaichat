@@ -1,7 +1,17 @@
 import streamlit as st
 import requests
 
-st.set_page_config(page_title="Chatbot", layout="wide", page_icon="🤖", initial_sidebar_state="expanded", bg_color="black")
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #000000;
+        color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
 headers = {"Authorization": "Bearer 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"}
