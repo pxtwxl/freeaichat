@@ -9,6 +9,10 @@ def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
 
+def chunk_iterator(chat_history, chunk_size):
+    for i in range(0, len(chat_history), chunk_size):
+        yield chat_history[i:i + chunk_size]
+
 def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
@@ -20,6 +24,7 @@ def main():
     
     if st.button("Send"):
         if user_input:
+            st.session_state.chat_history.append(f"You: {user_input}")
             output = query({
                 "parameters": {
                     "max_new_tokens": 2048,
@@ -29,12 +34,12 @@ def main():
                 "inputs": user_input,
             })
             bot_response = output[0]["generated_text"]
-            st.session_state.chat_history.append(f"You: {user_input}")
             st.session_state.chat_history.append(f"Bot: {bot_response}")
             
             st.write("Bot:", bot_response)
-
-    st.write("\n".join(st.session_state.chat_history))
+    st.subheader("Chat History")
+    for chunk in chunk_iterator(st.session_state.chat_history, chunk_size=5):
+        st.write("\n".join(chunk))
 
 if __name__ == "__main__":
     main()
