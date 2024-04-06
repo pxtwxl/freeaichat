@@ -77,36 +77,6 @@ import requests
 
 st.set_page_config(page_title="FreeChatAI", page_icon="cbico.ico")
 
-# Top bar HTML code with sidebar button
-sidebar_js = """
-<script>
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-}
-</script>
-"""
-
-# Sidebar HTML code
-sidebar = """
-<div id="mySidebar" class="sidebar" style="position: fixed; top: 0; left: 0; height: 100%; width: 0; z-index: 1; background-color: #333; padding-top: 60px; transition: 0.5s;">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="position: absolute; top: 10px; right: 10px; font-size: 36px; color: white;">&times;</a>
-    <div style="padding: 10px;">
-        <h2 style="color: white;">Navigation</h2>
-        <a href="#" style="color: white; text-decoration: none;">Home</a>
-        <a href="#" style="color: white; text-decoration: none;">About</a>
-        <!-- Add more sidebar links as needed -->
-    </div>
-</div>
-"""
-
-# Inject the sidebar JavaScript and HTML into the Streamlit app
-st.markdown(sidebar_js, unsafe_allow_html=True)
-st.markdown(sidebar, unsafe_allow_html=True)
-
 st.markdown(
    """
     <style>
@@ -135,7 +105,6 @@ def query(payload):
     return response.json()
 
 def main():
-    st.sidebar.image("chatbotsb.png", use_column_width=True)
     st.sidebar.title("Navigation")
     menu_selection = st.sidebar.radio("Go to", ["Chat", "About"])
 
