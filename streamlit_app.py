@@ -90,20 +90,14 @@ st.markdown(
     .you{
        font-size: 16px;
        font-style: bold;
-       overflow-wrap: break-word; /* Wrap long words */
-       word-wrap: break-word; /* Wrap long words */
-       word-break: break-all; /* Break long words */
-       white-space: nowrap; /* Prevent wrapping */
-       max-width: 300px; /* Limit width */
-       display: inline-block; /* Ensure inline display */
+       max-width: 300px;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
     }
     .bot{
        font-size: 16px;
        font-style: bold;
-       overflow-wrap: break-word; /* Wrap long words */
-       word-wrap: break-word; /* Wrap long words */
-       word-break: break-all; /* Break long words */
-       white-space: normal; /* Handle overflow */
     }
     </style>
     """,
@@ -161,4 +155,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
