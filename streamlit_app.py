@@ -77,6 +77,13 @@ import requests
 
 st.set_page_config(page_title="FreeChatAI", page_icon="cbico.ico")
 
+top_bar = """
+<div style="background-color:#333; padding:10px;">
+    <h1 style="color:white; text-align:center;">FreeChatAI</h1>
+</div>
+"""
+st.markdown(top_bar, unsafe_allow_html=True)
+
 st.markdown(
    """
     <style>
