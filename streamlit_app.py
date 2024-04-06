@@ -105,6 +105,7 @@ def query(payload):
     return response.json()
 
 def main():
+    st.sidebar.image("chatbotsb.png", use_column_width=True)
     st.sidebar.title("Navigation")
     menu_selection = st.sidebar.radio("Go to", ["Chat", "About"])
 
