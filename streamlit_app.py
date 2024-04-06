@@ -77,12 +77,56 @@ import requests
 
 st.set_page_config(page_title="FreeChatAI", page_icon="cbico.ico")
 
+# Top bar HTML code with sidebar button
 top_bar = """
 <div style="background-color:#333; padding:10px;">
-    <h1 style="color:white; text-align:center;">FreeChatAI</h1>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+            <h1 style="color:white;">FreeChatAI</h1>
+        </div>
+        <div>
+            <button onclick="openNav()" style="background-color:#333; color:white; border:none; cursor:pointer; padding:10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
 </div>
 """
+
+# JavaScript function to open/close sidebar
+sidebar_js = """
+<script>
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+}
+</script>
+"""
+
+# Sidebar HTML code
+sidebar = """
+<div id="mySidebar" class="sidebar" style="position: fixed; top: 0; left: 0; height: 100%; width: 0; z-index: 1; background-color: #333; padding-top: 60px; transition: 0.5s;">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="position: absolute; top: 10px; right: 10px; font-size: 36px; color: white;">&times;</a>
+    <div style="padding: 10px;">
+        <h2 style="color: white;">Navigation</h2>
+        <a href="#" style="color: white; text-decoration: none;">Home</a>
+        <a href="#" style="color: white; text-decoration: none;">About</a>
+        <!-- Add more sidebar links as needed -->
+    </div>
+</div>
+"""
+
+# Inject the sidebar JavaScript and HTML into the Streamlit app
+st.markdown(sidebar_js, unsafe_allow_html=True)
 st.markdown(top_bar, unsafe_allow_html=True)
+st.markdown(sidebar, unsafe_allow_html=True)
 
 st.markdown(
    """
