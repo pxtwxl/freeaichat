@@ -104,10 +104,6 @@ def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
 
-def chunk_iterator(chat_history, chunk_size):
-    for i in range(0, len(chat_history), chunk_size):
-        yield chat_history[i:i + chunk_size]
-
 def main():
     st.sidebar.title("Navigation")
     menu_selection = st.sidebar.radio("Go to", ["Chat", "About"])
@@ -134,15 +130,15 @@ def main():
                 })
                 bot_response = output[0]["generated_text"]
                 bot_response = bot_response.replace(user_input, "").strip()
-                st.session_state.chat_history.append((user_input,bot_response))
+                st.session_state.chat_history.append({"You": user_input, "Bot": bot_response})
 
                 st.subheader("Response")
                 st.write("Bot:", bot_response)
-        st.subheader("Chat History")
+        st.sidebar.subheader("Chat History")
 
-        for i,(user_input, bot_response) in enumerate(st.session_state.chat_history[:-1]):
-                st.write(f"<p class='you'>You : \n{user_input}</p>", unsafe_allow_html=True)
-                st.write(f"<p class='bot'>Bot : \n{bot_response}</p>", unsafe_allow_html=True)
+        for i, chat_pair in enumerate(st.session_state.chat_history):
+            st.sidebar.write(f"You: {chat_pair['You']}")
+            st.sidebar.write(f"Bot: {chat_pair['Bot']}")
 
     elif menu_selection == "About":
         st.title("About")
