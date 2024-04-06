@@ -105,7 +105,6 @@ sidebar = """
 
 # Inject the sidebar JavaScript and HTML into the Streamlit app
 st.markdown(sidebar_js, unsafe_allow_html=True)
-# st.markdown(top_bar, unsafe_allow_html=True)
 st.markdown(sidebar, unsafe_allow_html=True)
 
 st.markdown(
