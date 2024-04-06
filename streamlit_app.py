@@ -134,11 +134,11 @@ def main():
 
                 st.subheader("Response")
                 st.write("Bot:", bot_response)
-        st.sidebar.subheader("Chat History")
 
+        st.sidebar.subheader("Chat History")
         for i, chat_pair in enumerate(st.session_state.chat_history):
-            st.sidebar.write(f"You: {chat_pair['You']}")
-            st.sidebar.write(f"Bot: {chat_pair['Bot']}")
+            if st.sidebar.button(chat_pair['You']):
+                st.write(f"Bot: {chat_pair['Bot']}")
 
     elif menu_selection == "About":
         st.title("About")
@@ -147,4 +147,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
